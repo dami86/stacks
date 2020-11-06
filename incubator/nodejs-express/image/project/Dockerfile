@@ -29,7 +29,7 @@ FROM node:12-slim
 RUN apt-get update && apt-get install -y libssl1.1 ca-certificates && apt-get clean
 
 # Copy project with dependencies
-COPY --chown=node:node --from=0 /project.tgz /
+RUN sudo --chown=node:node --from=0 /project.tgz /
 RUN tar xf project.tgz && chown -R node:node /project && rm project.tgz
 WORKDIR /project
 
